@@ -14,6 +14,7 @@ class LoginView extends GetView<LoginController> {
       appBar: AppBar(
         title: Text('Login View'),
         centerTitle: true,
+        backgroundColor: Colors.red[800],
       ),
       body: Container(
         padding: EdgeInsets.all(10),
@@ -39,6 +40,13 @@ class LoginView extends GetView<LoginController> {
               child: TextButton(
                 onPressed: () => Get.toNamed(Routes.RESET_PASSWORD),
                 child: Text("Reset Password"),
+                style: ButtonStyle(
+                  textStyle: MaterialStateProperty.all<TextStyle>(
+                    TextStyle(
+                      color: Colors.red,
+                    ),
+                  ),
+                ),
               ),
             ),
             SizedBox(
@@ -50,6 +58,10 @@ class LoginView extends GetView<LoginController> {
                 controller.cPass.text,
               ),
               child: Text("Login"),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red[800],
+                foregroundColor: Colors.white,
+              ),
             ),
             SizedBox(
               height: 10,
@@ -63,6 +75,17 @@ class LoginView extends GetView<LoginController> {
                   child: Text("Daftar Disini"),
                 )
               ],
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(
+              onPressed: () => cAuth.LoginGoogle(),
+              child: Text("Login with Google"),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red[800],
+                foregroundColor: Colors.white,
+              ),
             ),
           ],
         ),

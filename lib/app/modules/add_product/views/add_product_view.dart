@@ -12,33 +12,64 @@ class AddProductView extends GetView<AddProductController> {
       appBar: AppBar(
         title: const Text('Add Product'),
         centerTitle: true,
+        backgroundColor: Colors.red[800],
       ),
       body: Padding(
         padding: EdgeInsets.all(8),
         child: Column(
           children: [
             TextField(
-              controller: controller.cNama,
+              controller: controller.cNpm,
               autocorrect: false,
               textInputAction: TextInputAction.next,
-              decoration: InputDecoration(labelText: "Nama Produk"),
+              decoration: InputDecoration(labelText: "NPM Mahasiswa"),
             ),
             SizedBox(
               height: 10,
             ),
             TextField(
-              controller: controller.cHarga,
+              controller: controller.cNama,
               textInputAction: TextInputAction.done,
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(labelText: "Harga Produk"),
+              decoration: InputDecoration(labelText: "Nama Mahasiswa"),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            TextField(
+              controller: controller.cAlamat,
+              textInputAction: TextInputAction.done,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(labelText: "Alamat"),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            TextField(
+              controller: controller.cProgramStudi,
+              textInputAction: TextInputAction.done,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(labelText: "Program Studi"),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            TextField(
+              controller: controller.cJk,
+              textInputAction: TextInputAction.done,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(labelText: "Jenis Kelamin"),
             ),
             SizedBox(
               height: 10,
             ),
             ElevatedButton(
               onPressed: () => controller.addProduct(
+                controller.cNpm.text,
                 controller.cNama.text,
-                controller.cHarga.text,
+                controller.cAlamat.text,
+                controller.cProgramStudi.text,
+                controller.cJk.text,
               ),
               child: Text("Simpan"),
             ),

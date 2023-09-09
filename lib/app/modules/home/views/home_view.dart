@@ -47,6 +47,7 @@ class HomeView extends GetView<HomeController> {
       appBar: AppBar(
         title: const Text('HomeView'),
         centerTitle: true,
+        backgroundColor: Colors.red[800],
       ),
 
       //1. Menampilkan data tidak realtime
@@ -87,9 +88,9 @@ class HomeView extends GetView<HomeController> {
                   backgroundColor: Colors.white,
                 ),
                 title: Text(
-                    "${(listAllDocs[index].data() as Map<String, dynamic>)["name"]}"),
+                    "${(listAllDocs[index].data() as Map<String, dynamic>)["nama"]}"),
                 subtitle: Text(
-                    "${(listAllDocs[index].data() as Map<String, dynamic>)["price"]}"),
+                    "${(listAllDocs[index].data() as Map<String, dynamic>)["npm"]}"),
                 trailing: IconButton(
                   onPressed: () => showOption(listAllDocs[index].id),
                   icon: Icon(Icons.more_vert),

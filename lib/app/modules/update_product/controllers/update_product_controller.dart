@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class UpdateProductController extends GetxController {
+  late TextEditingController cNpm;
   late TextEditingController cNama;
-  late TextEditingController cHarga;
+  late TextEditingController cAlamat;
+  late TextEditingController cProgramStudi;
+  late TextEditingController cJk;
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
@@ -15,20 +18,30 @@ class UpdateProductController extends GetxController {
     return docRef.get();
   }
 
-  void updateProduct(String nama, String harga, String id) async {
+  void updateProduct(String npm, String nama, String alamat,
+      String program_studi, String jenis_kelamin, String id) async {
     DocumentReference productById = firestore.collection("products").doc(id);
     try {
       await productById.update({
-        "name": nama,
-        "price": harga,
+        "npm": npm,
+        "nama": nama,
+        "alamat": alamat,
+        "program_studi": program_studi,
+        "jk": jenis_kelamin,
       });
 
       Get.defaultDialog(
         title: "Berhasil",
         middleText: "Berhasil Mengubah Data Produk",
         onConfirm: () {
+          cNpm.clear();
           cNama.clear();
-          cHarga.clear();
+          cAlamat.clear();
+          cProgramStudi.clear();
+          cJk.clear();
+          Get.back();
+          Get.back();
+          Get.back();
           Get.back();
           Get.back();
         },
@@ -46,16 +59,22 @@ class UpdateProductController extends GetxController {
   @override
   void onInit() {
     // TODO: implement onInit
+    cNpm = TextEditingController();
     cNama = TextEditingController();
-    cHarga = TextEditingController();
+    cAlamat = TextEditingController();
+    cProgramStudi = TextEditingController();
+    cJk = TextEditingController();
     super.onInit();
   }
 
   @override
   void onClose() {
     // TODO: implement onClose
+    cNpm.dispose();
     cNama.dispose();
-    cHarga.dispose();
+    cAlamat.dispose();
+    cProgramStudi.dispose();
+    cJk.dispose();
     super.onClose();
   }
 }
